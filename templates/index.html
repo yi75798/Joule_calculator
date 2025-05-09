@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{font-family:"微軟正黑體"; background-color: black; color: white;}
+    button{font-size:18px; background-color: #F39C12; color: white; padding: 10px 12px}
+    .result-container {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+    .result-column {
+        flex: 1;
+        background-color: #222;
+        padding: 15px;
+        border-radius: 10px;
+    
+</style>
+<body >
+    <h1>Airsoft 焦耳–初速計算器 Airsoft Joule-Velocity Calculator</h1>
+    <div>Airsoft 焦耳數計算器附其他彈重對照表</div>
+    <div class="result-container">
+        <div class="result-column">
+        <h2>請輸入原始資料</h2>
+        <form action="/calculate", method="GET">
+            <font size="4" face="微軟正黑體">彈徑（mm）：</font><br/>
+            <input type="number" name="mm" style="font-size: 16px" value="{{ mm or 0 }}" min="0" step="0.1"/><br/>
+            <font size="4" face="微軟正黑體">彈重（g）：</font><br/>
+            <input type="number" name="weight" style="font-size: 16px" value="{{ weight or 0 }}" min="0" step="0.1"/><br/>
+            <font size="4" face="微軟正黑體">初速（m/s）：</font><br/>
+            <input type="number" name="velocity" style="font-size: 16px" value="{{ velocity or 0 }}" min="0" step="0.1"/><br/>
+    
+            <br/>
+        <button type="submit">開始計算</button> <button type="button" onclick="clearForm()" style="margin-left: 10px;">清除</button>
+
+        </div>
+        <div class="result-column">
+            <h2>計算結果</h2>
+            <font size="4" face="微軟正黑體">焦耳：</font><br/>
+            <input type="text" name="Joule" value="{{ res_J }}" style="font-size: 16px; background-color: #D0D3D4;" disabled/><br/>
+
+            <font size="4" face="微軟正黑體">動能焦耳：</font><br/>
+            <input type="text" name="Jcm2" value="{{ res_Jcm2 }}" style="font-size: 16px; background-color: #D0D3D4;" disabled/><br/>
+
+            <font size="4" face="微軟正黑體">FPS：</font><br/>
+            <input type="text" name="fps" value="{{ res_fps }}" style="font-size: 16px; background-color: #D0D3D4;" disabled/><br/>
+        </div>
+
+        <div class="result-column">
+            <h2>焦耳-初速對照表</h2>
+            <h3>相同焦耳數下，不同彈重對應的初速</h3>
+    
+            <font size="4" face="微軟正黑體">0.2g 初速（m/s）：</font><br/>
+            <input type="text" name="g2" value="{{ res_2 }}" style="font-size: 16px; background-color: #D0D3D4;" disabled/><br/>
+            <font size="4" face="微軟正黑體">0.25g 初速（m/s）：</font><br/>
+            <input type="text" name="g25" value="{{ res_25 }}" style="font-size: 16px; background-color: #D0D3D4;" disabled/><br/>
+            <font size="4" face="微軟正黑體">0.3g 初速（m/s）：</font><br/>
+            <input type="text" name="g3" value="{{ res_3 }}" style="font-size: 16px; background-color: #D0D3D4;" disabled/><br/>
+            <font size="4" face="微軟正黑體">0.36g 初速（m/s）：</font><br/>
+            <input type="text" name="g36" value="{{ res_36 }}" style="font-size: 16px; background-color: #D0D3D4;" disabled/><br/>
+            <font size="4" face="微軟正黑體">0.4g 初速（m/s）：</font><br/>
+            <input type="text" name="4g" value="{{ res_4 }}" style="font-size: 16px; background-color: #D0D3D4;" disabled/><br/>
+        </div>
+    </div>
+    </form>
+    <script>
+        function clearForm() {
+            document.querySelector('input[name="mm"]').value = 0;
+            document.querySelector('input[name="weight"]').value = 0;
+            document.querySelector('input[name="velocity"]').value = 0;
+            document.querySelector('input[name="Joule"]').value = '';
+            document.querySelector('input[name="Jcm2"]').value = '';
+            document.querySelector('input[name="fps"]').value = '';
+        }
+        </script>
+</body>
+</html>
