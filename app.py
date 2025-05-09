@@ -56,4 +56,4 @@ def cal_J():
                          weight = request.args.get('weight', 0, type=float),
                          velocity = request.args.get('velocity', 0, type=float))
 
-app.run(host="0.0.0.0", port=10000)
+app.run(host="0.0.0.0", port=10000, debug=True)
